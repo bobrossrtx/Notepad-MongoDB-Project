@@ -1,7 +1,13 @@
+/**
+ * Notepad:
+ * Using express and mongoDB for a note tracking app
+*/
+// Import statements
 const express = require('express');
 const mongoose = require('mongoose');
-const postRouter = require('./routes/notes')
 const Note = require('./models/note')
+const postRouter = require('./routes/notes')
+const methodOverride = require('method-override');
 const app = express();
 
 mongoose.connect("mongodb://localhost/notepad", {
@@ -11,9 +17,9 @@ mongoose.connect("mongodb://localhost/notepad", {
     console.error('App starting error:', err.stack);
 })
 
-app.set('view engine', 'ejs');
-
+app.set('view engine', 'ejs'); // Using the view engine: ejs
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 app.get('/', async (req, res) => {
     const notes = await Note.find().sort({ createdAt: 'desc' });
