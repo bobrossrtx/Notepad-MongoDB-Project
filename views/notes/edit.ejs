@@ -13,15 +13,10 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mb-1"><%= note.title %></h1>
-        <div class="text-muted mb-2"><%= note.createdAt.toLocaleDateString() %></div>
-        <a href="/" class="btn btn-secondary">All Notes</a>
-        <a href="/notes/edit/<%= note.id %> " class="btn btn-info">Edit</a>
-        <div class="text-muted mt-2">id:<%= note.id %></div>
-        <hr>
-        <div>
-            <%- note.sanitizedHtml %>
-        </div>
+        <h1 class="mb-4">Edit Note</h1>
+        <form action="/notes/<%= note.id %>?_method=PUT" method="POST">
+            <%- include('_form_fields') %> 
+        </form>
     </div>
 </body>
 </html>

@@ -26,10 +26,11 @@
                     <div class="card-text mb-2">
                         <%= note.description %>
                     </div>
-                    <a href="notes/<%= note.id %>"
-                        class="btn btn-primary">
-                        Read More
-                    </a>
+                    <a href="notes/<%= note.id %>" class="btn btn-primary">Read More</a>
+                    <a href="/notes/edit/<%= note.id %> " class="btn btn-info">Edit</a>
+                    <form action="/notes/<%= note.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         <% }) %> 
